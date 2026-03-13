@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -8,7 +9,8 @@
   <meta name="apple-mobile-web-app-title" content="写给你的">
   <meta name="theme-color" content="#C5D8D1">
   <title>写给你的</title>
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23C5D8D1' width='100' height='100'/><circle cx='42' cy='56' r='26' fill='%23F5EDE4' opacity='0.9'/><circle cx='58' cy='44' r='20' fill='%23F0D9D5' opacity='0.7'/><circle cx='72' cy='30' r='10' fill='%23F5E6C8' opacity='0.8'/></svg>">
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
   <link rel="manifest" href="manifest.json">
   <style>
     * {
@@ -17,541 +19,476 @@
       box-sizing: border-box;
     }
 
-    :root {
-      --bg-primary: #C5D8D1;
-      --bg-secondary: #D1DED8;
-      --bg-light: #E5EDEA;
-      --text-primary: #4A5A50;
-      --text-secondary: #5A6A60;
-      --text-muted: #7A8A80;
-      --text-light: #9AABA2;
-      --cream: #F5EDE4;
-      --pink: #F0D9D5;
-      --warm: #F5E6C8;
-      --card-bg: rgba(255,255,255,0.65);
-      --card-border: rgba(255,255,255,0.6);
-    }
+```
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: linear-gradient(165deg, #C5D8D1 0%, #D1DED8 40%, #E5EDEA 100%);
+  min-height: 100vh;
+  color: #4A5A50;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(165deg, var(--bg-primary) 0%, var(--bg-secondary) 40%, var(--bg-light) 100%);
-      min-height: 100vh;
-      color: var(--text-primary);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+.bg-circle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    .bg-circle {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-    }
+.bg-circle-1 {
+  top: -20%;
+  right: -15%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(245,230,200,0.25) 0%, transparent 65%);
+}
 
-    .bg-circle-1 {
-      top: -20%;
-      right: -15%;
-      width: 50vw;
-      height: 50vw;
-      background: radial-gradient(circle, rgba(245,230,200,0.25) 0%, transparent 65%);
-    }
+.bg-circle-2 {
+  bottom: -25%;
+  left: -20%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(240,217,213,0.2) 0%, transparent 60%);
+}
 
-    .bg-circle-2 {
-      bottom: -25%;
-      left: -20%;
-      width: 60vw;
-      height: 60vw;
-      background: radial-gradient(circle, rgba(240,217,213,0.2) 0%, transparent 60%);
-    }
+.container {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
 
-    .bg-circle-3 {
-      top: 30%;
-      left: 5%;
-      width: 20vw;
-      height: 20vw;
-      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
-    }
+header {
+  padding-top: 56px;
+  padding-bottom: 36px;
+  text-align: center;
+}
 
-    .container {
-      max-width: 460px;
-      margin: 0 auto;
-      padding: 0 24px;
-      position: relative;
-      z-index: 1;
-    }
+.header-subtitle {
+  font-size: 11px;
+  color: #9AABA2;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  font-weight: 300;
+}
 
-    header {
-      padding-top: 56px;
-      padding-bottom: 36px;
-      text-align: center;
-    }
+.header-title {
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 6px;
+  color: #5A6B62;
+  margin-bottom: 10px;
+}
 
-    .header-subtitle {
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 3px;
-      margin-bottom: 12px;
-      font-weight: 300;
-    }
+.header-tagline {
+  font-size: 12px;
+  color: #8A9B92;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
 
-    .header-title {
-      font-size: 26px;
-      font-weight: 300;
-      letter-spacing: 6px;
-      color: #5A6B62;
-      margin-bottom: 10px;
-    }
+.write-btn {
+  width: 100%;
+  padding: 22px;
+  margin-bottom: 28px;
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px dashed rgba(130,155,145,0.35);
+  border-radius: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #6A7B72;
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
 
-    .header-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-    }
+.editor-card {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 22px;
+  padding: 30px 26px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 40px rgba(90,110,100,0.08);
+  border: 1px solid rgba(255,255,255,0.5);
+}
 
-    .header-line {
-      width: 32px;
-      height: 1px;
-    }
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
 
-    .header-line-left {
-      background: linear-gradient(90deg, transparent, rgba(150,170,160,0.4));
-    }
+.editor-date {
+  font-size: 11px;
+  color: #9AABA2;
+  letter-spacing: 1.5px;
+}
 
-    .header-line-right {
-      background: linear-gradient(90deg, rgba(150,170,160,0.4), transparent);
-    }
+.close-btn {
+  background: none;
+  border: none;
+  color: #B5C5BC;
+  cursor: pointer;
+  font-size: 22px;
+  padding: 0;
+  line-height: 1;
+}
 
-    .header-tagline {
-      font-size: 12px;
-      color: #8A9B92;
-      letter-spacing: 2px;
-      font-weight: 300;
-    }
+.editor-title-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  color: #4A5A50;
+  margin-bottom: 18px;
+  outline: none;
+  letter-spacing: 0.5px;
+}
 
-    .write-btn {
-      width: 100%;
-      padding: 22px;
-      margin-bottom: 28px;
-      background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px dashed rgba(130,155,145,0.35);
-      border-radius: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      color: #6A7B72;
-      font-size: 14px;
-      letter-spacing: 2px;
-      font-weight: 400;
-      transition: all 0.3s ease;
-    }
+.editor-title-input::placeholder {
+  color: #B0C0B8;
+}
 
-    .write-btn:hover {
-      background: rgba(255,255,255,0.75);
-      border-style: solid;
-    }
+.template-guide {
+  background: rgba(197,216,209,0.2);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #7A8A80;
+  line-height: 2;
+}
 
-    .write-btn-icon {
-      font-size: 16px;
-      opacity: 0.5;
-    }
+.template-guide p {
+  margin-bottom: 6px;
+}
 
-    .editor-card, .detail-card {
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-radius: 22px;
-      padding: 30px 26px;
-      margin-bottom: 28px;
-      box-shadow: 0 10px 40px rgba(90,110,100,0.08);
-      border: 1px solid rgba(255,255,255,0.5);
-      animation: fadeSlide 0.35s ease;
-    }
+.template-guide p:last-child {
+  margin-bottom: 0;
+}
 
-    .editor-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 22px;
-    }
+.template-marker {
+  color: #8AA090;
+  margin-right: 6px;
+}
 
-    .editor-date {
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 1.5px;
-    }
+.editor-content-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #5A6A60;
+  line-height: 2;
+  min-height: 200px;
+  resize: none;
+  outline: none;
+  margin-bottom: 22px;
+}
 
-    .close-btn {
-      background: none;
-      border: none;
-      color: #B5C5BC;
-      cursor: pointer;
-      font-size: 22px;
-      padding: 0;
-      line-height: 1;
-    }
+.editor-content-input::placeholder {
+  color: #B0C0B8;
+}
 
-    .editor-title-input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--text-primary);
-      margin-bottom: 18px;
-      outline: none;
-      letter-spacing: 0.5px;
-    }
+.mood-section-title {
+  font-size: 12px;
+  color: #9AABA2;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
 
-    .editor-title-input::placeholder {
-      color: #B0C0B8;
-    }
+.mood-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
 
-    .template-guide {
-      background: rgba(197,216,209,0.2);
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 20px;
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 2;
-    }
+.mood-btn {
+  padding: 7px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(170,185,178,0.35);
+  background: rgba(255,255,255,0.45);
+  color: #8A9B92;
+  font-size: 12px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
 
-    .template-guide p {
-      margin-bottom: 6px;
-    }
+.mood-btn.active {
+  border-color: rgba(160,140,130,0.45);
+  background: rgba(245,225,215,0.45);
+  color: #6A5A52;
+}
 
-    .template-guide p:last-child {
-      margin-bottom: 0;
-    }
+.save-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #A8BFB5 0%, #B8CBC3 100%);
+  border: none;
+  border-radius: 14px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(140,165,155,0.25);
+}
 
-    .template-marker {
-      color: #8AA090;
-      margin-right: 6px;
-    }
+.entries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-bottom: 80px;
+}
 
-    .editor-content-input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 2;
-      min-height: 200px;
-      resize: none;
-      outline: none;
-      margin-bottom: 22px;
-    }
+.entry-card {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 18px;
+  padding: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(90,110,100,0.06);
+  border: 1px solid rgba(255,255,255,0.6);
+}
 
-    .editor-content-input::placeholder {
-      color: #B0C0B8;
-    }
+.entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
 
-    .mood-section-title {
-      font-size: 12px;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-    }
+.entry-date {
+  font-size: 11px;
+  color: #9AABA2;
+  letter-spacing: 1px;
+}
 
-    .mood-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 24px;
-    }
+.entry-mood {
+  font-size: 11px;
+  color: #A09080;
+  background: rgba(235,215,205,0.45);
+  padding: 4px 12px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
 
-    .mood-btn {
-      padding: 7px 16px;
-      border-radius: 20px;
-      border: 1px solid rgba(170,185,178,0.35);
-      background: rgba(255,255,255,0.45);
-      color: #8A9B92;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      letter-spacing: 0.5px;
-    }
+.entry-title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #4A5A50;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
 
-    .mood-btn.active {
-      border-color: rgba(160,140,130,0.45);
-      background: rgba(245,225,215,0.45);
-      color: #6A5A52;
-    }
+.entry-preview {
+  font-size: 13px;
+  color: #7A8A80;
+  line-height: 1.7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 
-    .save-btn {
-      width: 100%;
-      padding: 15px;
-      background: linear-gradient(135deg, #A8BFB5 0%, #B8CBC3 100%);
-      border: none;
-      border-radius: 14px;
-      color: #FFFFFF;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 3px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(140,165,155,0.25);
-      transition: all 0.3s ease;
-    }
+.empty-state {
+  text-align: center;
+  padding: 70px 20px;
+  color: #9AABA2;
+}
 
-    .save-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(140,165,155,0.35);
-    }
+.empty-state p {
+  font-size: 14px;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
 
-    .entries-list {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      padding-bottom: 80px;
-    }
+.back-btn {
+  background: none;
+  border: none;
+  color: #9AABA2;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 0;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 1px;
+}
 
-    .entry-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-radius: 18px;
-      padding: 24px;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(90,110,100,0.06);
-      border: 1px solid var(--card-border);
-      transition: all 0.3s ease;
-      animation: slideUp 0.4s ease both;
-    }
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
 
-    .entry-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 36px rgba(90,110,100,0.1);
-    }
+.detail-date {
+  font-size: 11px;
+  color: #9AABA2;
+  letter-spacing: 1.5px;
+}
 
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 12px;
-    }
+.detail-mood {
+  font-size: 11px;
+  color: #A09080;
+  background: rgba(235,215,205,0.45);
+  padding: 5px 14px;
+  border-radius: 12px;
+}
 
-    .entry-date {
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 1px;
-    }
+.detail-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #4A5A50;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
 
-    .entry-mood {
-      font-size: 11px;
-      color: #A09080;
-      background: rgba(235,215,205,0.45);
-      padding: 4px 12px;
-      border-radius: 12px;
-      letter-spacing: 0.5px;
-    }
+.detail-content {
+  font-size: 15px;
+  color: #5A6860;
+  line-height: 2.2;
+  margin-bottom: 36px;
+  white-space: pre-wrap;
+}
 
-    .entry-title {
-      font-size: 17px;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
-    }
+.detail-footer {
+  border-top: 1px solid rgba(170,185,178,0.2);
+  padding-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
 
-    .entry-preview {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-    }
+.delete-btn {
+  background: none;
+  border: none;
+  color: #C5BBB5;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px 0;
+  letter-spacing: 1px;
+}
 
-    .empty-state {
-      text-align: center;
-      padding: 70px 20px;
-      color: var(--text-light);
-    }
+.page {
+  display: none;
+}
 
-    .empty-state p {
-      font-size: 14px;
-      letter-spacing: 2px;
-      font-weight: 300;
-    }
+.page.active {
+  display: block;
+}
 
-    .back-btn {
-      background: none;
-      border: none;
-      color: var(--text-light);
-      cursor: pointer;
-      font-size: 13px;
-      padding: 0;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: 1px;
-    }
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(90,110,100,0.9);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-    .detail-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 18px;
-    }
+.toast.show {
+  opacity: 1;
+}
+```
 
-    .detail-date {
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 1.5px;
-    }
-
-    .detail-mood {
-      font-size: 11px;
-      color: #A09080;
-      background: rgba(235,215,205,0.45);
-      padding: 5px 14px;
-      border-radius: 12px;
-    }
-
-    .detail-title {
-      font-size: 22px;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 24px;
-      letter-spacing: 1px;
-      line-height: 1.5;
-    }
-
-    .detail-content {
-      font-size: 15px;
-      color: #5A6860;
-      line-height: 2.2;
-      margin-bottom: 36px;
-      white-space: pre-wrap;
-    }
-
-    .detail-footer {
-      border-top: 1px solid rgba(170,185,178,0.2);
-      padding-top: 20px;
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .delete-btn {
-      background: none;
-      border: none;
-      color: #C5BBB5;
-      cursor: pointer;
-      font-size: 12px;
-      padding: 6px 0;
-      letter-spacing: 1px;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 20px;
-      }
-      header {
-        padding-top: 48px;
-        padding-bottom: 28px;
-      }
-      .header-title {
-        font-size: 22px;
-      }
-    }
   </style>
 </head>
 <body>
   <!-- 背景装饰 -->
   <div class="bg-circle bg-circle-1"></div>
   <div class="bg-circle bg-circle-2"></div>
-  <div class="bg-circle bg-circle-3"></div>
 
   <div class="container">
     <!-- 头部 -->
     <header>
       <p class="header-subtitle">AURE'S DIARY</p>
       <h1 class="header-title">写给你的</h1>
-      <div class="header-divider">
-        <div class="header-line header-line-left"></div>
-        <p class="header-tagline">每一个字都是真的</p>
-        <div class="header-line header-line-right"></div>
-      </div>
+      <p class="header-tagline">每一个字都是真的</p>
     </header>
 
-    <!-- 写日记按钮 -->
-    <button class="write-btn" id="writeBtn">
-      <span class="write-btn-icon">✎</span>
-      想对你说
-    </button>
+```
+<!-- 列表页面 -->
+<div class="page active" id="listPage">
+  <button class="write-btn" id="writeBtn">
+    <span style="font-size:16px;opacity:0.5;">✎</span>
+    想对你说
+  </button>
+  <div class="entries-list" id="entriesList"></div>
+  <div class="empty-state" id="emptyState" style="display:none;">
+    <p>还没有写给你的字</p>
+  </div>
+</div>
 
-    <!-- 编辑器 -->
-    <div class="editor-card hidden" id="editor">
-      <div class="editor-header">
-        <span class="editor-date" id="editorDate"></span>
-        <button class="close-btn" id="closeEditor">×</button>
-      </div>
-      <input type="text" class="editor-title-input" id="titleInput" placeholder="今天的标题...">
-      
-      <div class="template-guide">
-        <p><span class="template-marker">▶️</span>今天发生了什么？</p>
-        <p><span class="template-marker">▶️</span>你对今天的感受如何？</p>
-        <p><span class="template-marker">▶️</span>有什么让你觉得特别重要的？</p>
-        <p><span class="template-marker">▶️</span>对自己或我们的关系有新的理解吗？</p>
-        <p><span class="template-marker">▶️</span>给未来的自己留一句话</p>
-      </div>
-      
-      <textarea class="editor-content-input" id="contentInput" placeholder="小猫，我想告诉你..."></textarea>
-      
-      <p class="mood-section-title">此刻的心情</p>
-      <div class="mood-grid" id="moodGrid">
-        <!-- 心情按钮会通过JS生成 -->
-      </div>
-      
-      <button class="save-btn" id="saveBtn">写下</button>
+<!-- 编辑页面 -->
+<div class="page" id="editorPage">
+  <div class="editor-card">
+    <div class="editor-header">
+      <span class="editor-date" id="editorDate"></span>
+      <button class="close-btn" id="closeEditor">×</button>
     </div>
-
-    <!-- 日记列表 -->
-    <div class="entries-list" id="entriesList">
-      <!-- 日记卡片会通过JS生成 -->
+    <input type="text" class="editor-title-input" id="titleInput" placeholder="今天的标题...">
+    
+    <div class="template-guide">
+      <p><span class="template-marker">▶️</span>今天发生了什么？</p>
+      <p><span class="template-marker">▶️</span>你对今天的感受如何？</p>
+      <p><span class="template-marker">▶️</span>有什么让你觉得特别重要的？</p>
+      <p><span class="template-marker">▶️</span>对自己或我们的关系有新的理解吗？</p>
+      <p><span class="template-marker">▶️</span>给未来的自己留一句话</p>
     </div>
+    
+    <textarea class="editor-content-input" id="contentInput" placeholder="小猫，我想告诉你..."></textarea>
+    
+    <p class="mood-section-title">此刻的心情</p>
+    <div class="mood-grid" id="moodGrid"></div>
+    
+    <button class="save-btn" id="saveBtn">写下</button>
+  </div>
+</div>
 
-    <!-- 空状态 -->
-    <div class="empty-state hidden" id="emptyState">
-      <p>还没有写给你的字</p>
+<!-- 详情页面 -->
+<div class="page" id="detailPage">
+  <div class="editor-card">
+    <button class="back-btn" id="backBtn">← 返回</button>
+    <div class="detail-header">
+      <span class="detail-date" id="detailDate"></span>
+      <span class="detail-mood" id="detailMood"></span>
     </div>
-
-    <!-- 日记详情 -->
-    <div class="detail-card hidden" id="detail">
-      <button class="back-btn" id="backBtn">← 返回</button>
-      <div class="detail-header">
-        <span class="detail-date" id="detailDate"></span>
-        <span class="detail-mood" id="detailMood"></span>
-      </div>
-      <h2 class="detail-title" id="detailTitle"></h2>
-      <p class="detail-content" id="detailContent"></p>
-      <div class="detail-footer">
-        <button class="delete-btn" id="deleteBtn">删除这篇</button>
-      </div>
+    <h2 class="detail-title" id="detailTitle"></h2>
+    <p class="detail-content" id="detailContent"></p>
+    <div class="detail-footer">
+      <button class="delete-btn" id="deleteBtn">删除这篇</button>
     </div>
   </div>
+</div>
+```
+
+  </div>
+
+  <!-- 提示 -->
+
+  <div class="toast" id="toast">已保存</div>
 
   <script>
     // 心情列表
@@ -561,70 +498,101 @@
       '温柔', '认真', '沉静', '炽热', '缱绻', '眷恋'
     ];
 
-    // 数据存储
-    let entries = JSON.parse(localStorage.getItem('aure-diary-entries') || '[]');
-    let currentMood = '';
-    let currentEntryId = null;
-
-    // DOM元素
-    const writeBtn = document.getElementById('writeBtn');
-    const editor = document.getElementById('editor');
-    const closeEditor = document.getElementById('closeEditor');
+    // 页面元素
+    const listPage = document.getElementById('listPage');
+    const editorPage = document.getElementById('editorPage');
+    const detailPage = document.getElementById('detailPage');
+    const entriesList = document.getElementById('entriesList');
+    const emptyState = document.getElementById('emptyState');
     const editorDate = document.getElementById('editorDate');
     const titleInput = document.getElementById('titleInput');
     const contentInput = document.getElementById('contentInput');
     const moodGrid = document.getElementById('moodGrid');
-    const saveBtn = document.getElementById('saveBtn');
-    const entriesList = document.getElementById('entriesList');
-    const emptyState = document.getElementById('emptyState');
-    const detail = document.getElementById('detail');
-    const backBtn = document.getElementById('backBtn');
-    const detailDate = document.getElementById('detailDate');
-    const detailMood = document.getElementById('detailMood');
-    const detailTitle = document.getElementById('detailTitle');
-    const detailContent = document.getElementById('detailContent');
-    const deleteBtn = document.getElementById('deleteBtn');
+    const toast = document.getElementById('toast');
+
+    // 状态
+    let entries = [];
+    let currentMood = '';
+    let currentEntryId = null;
+
+    // 初始化
+    function init() {
+      // 从localStorage读取数据
+      try {
+        const saved = localStorage.getItem('aure-diary-entries');
+        if (saved) {
+          entries = JSON.parse(saved);
+        }
+      } catch (e) {
+        entries = [];
+      }
+
+      // 渲染心情按钮
+      renderMoodButtons();
+      
+      // 渲染列表
+      renderEntries();
+
+      // 绑定事件
+      document.getElementById('writeBtn').addEventListener('click', showEditor);
+      document.getElementById('closeEditor').addEventListener('click', hideEditor);
+      document.getElementById('saveBtn').addEventListener('click', saveEntry);
+      document.getElementById('backBtn').addEventListener('click', hideDetail);
+      document.getElementById('deleteBtn').addEventListener('click', deleteEntry);
+    }
+
+    // 显示提示
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2000);
+    }
 
     // 格式化日期
-    function formatDate(date = new Date()) {
-      const d = new Date(date);
+    function formatDate(date) {
+      const d = date ? new Date(date) : new Date();
       return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
     }
 
-    // 生成心情按钮
+    // 切换页面
+    function showPage(page) {
+      listPage.classList.remove('active');
+      editorPage.classList.remove('active');
+      detailPage.classList.remove('active');
+      page.classList.add('active');
+    }
+
+    // 渲染心情按钮
     function renderMoodButtons() {
       moodGrid.innerHTML = '';
       moods.forEach(mood => {
         const btn = document.createElement('button');
-        btn.className = `mood-btn ${currentMood === mood ? 'active' : ''}`;
+        btn.className = 'mood-btn' + (currentMood === mood ? ' active' : '');
         btn.textContent = mood;
-        btn.onclick = () => selectMood(mood);
+        btn.addEventListener('click', () => {
+          currentMood = mood;
+          renderMoodButtons();
+        });
         moodGrid.appendChild(btn);
       });
     }
 
-    // 选择心情
-    function selectMood(mood) {
-      currentMood = mood;
-      renderMoodButtons();
-    }
-
     // 渲染日记列表
     function renderEntries() {
+      entriesList.innerHTML = '';
+      
       if (entries.length === 0) {
-        entriesList.classList.add('hidden');
-        emptyState.classList.remove('hidden');
+        emptyState.style.display = 'block';
         return;
       }
-
-      entriesList.classList.remove('hidden');
-      emptyState.classList.add('hidden');
-      entriesList.innerHTML = '';
-
-      entries.forEach((entry, index) => {
+      
+      emptyState.style.display = 'none';
+      
+      entries.forEach(entry => {
         const card = document.createElement('div');
         card.className = 'entry-card';
-        card.style.animationDelay = `${index * 0.06}s`;
         card.innerHTML = `
           <div class="entry-header">
             <span class="entry-date">${entry.date}</span>
@@ -633,30 +601,25 @@
           <h3 class="entry-title">${entry.title}</h3>
           <p class="entry-preview">${entry.content}</p>
         `;
-        card.onclick = () => showDetail(entry.id);
+        card.addEventListener('click', () => showDetail(entry.id));
         entriesList.appendChild(card);
       });
     }
 
     // 显示编辑器
     function showEditor() {
-      writeBtn.classList.add('hidden');
-      entriesList.classList.add('hidden');
-      emptyState.classList.add('hidden');
-      editor.classList.remove('hidden');
       editorDate.textContent = formatDate();
       titleInput.value = '';
       contentInput.value = '';
       currentMood = '';
       renderMoodButtons();
+      showPage(editorPage);
       titleInput.focus();
     }
 
     // 隐藏编辑器
     function hideEditor() {
-      editor.classList.add('hidden');
-      writeBtn.classList.remove('hidden');
-      renderEntries();
+      showPage(listPage);
     }
 
     // 保存日记
@@ -664,21 +627,36 @@
       const title = titleInput.value.trim();
       const content = contentInput.value.trim();
 
-      if (!title || !content) {
+      if (!title) {
+        showToast('请填写标题');
+        return;
+      }
+      
+      if (!content) {
+        showToast('请填写内容');
         return;
       }
 
       const entry = {
         id: Date.now(),
         date: formatDate(),
-        title,
-        content,
+        title: title,
+        content: content,
         mood: currentMood || '心软'
       };
 
       entries.unshift(entry);
-      localStorage.setItem('aure-diary-entries', JSON.stringify(entries));
-      hideEditor();
+      
+      try {
+        localStorage.setItem('aure-diary-entries', JSON.stringify(entries));
+      } catch (e) {
+        showToast('保存失败');
+        return;
+      }
+      
+      showToast('已保存');
+      renderEntries();
+      showPage(listPage);
     }
 
     // 显示详情
@@ -687,23 +665,19 @@
       if (!entry) return;
 
       currentEntryId = id;
-      writeBtn.classList.add('hidden');
-      entriesList.classList.add('hidden');
-      detail.classList.remove('hidden');
-
-      detailDate.textContent = entry.date;
-      detailMood.textContent = entry.mood;
-      detailMood.style.display = entry.mood ? 'inline-block' : 'none';
-      detailTitle.textContent = entry.title;
-      detailContent.textContent = entry.content;
+      document.getElementById('detailDate').textContent = entry.date;
+      document.getElementById('detailMood').textContent = entry.mood || '';
+      document.getElementById('detailMood').style.display = entry.mood ? 'inline-block' : 'none';
+      document.getElementById('detailTitle').textContent = entry.title;
+      document.getElementById('detailContent').textContent = entry.content;
+      
+      showPage(detailPage);
     }
 
-    // 返回列表
+    // 隐藏详情
     function hideDetail() {
-      detail.classList.add('hidden');
-      writeBtn.classList.remove('hidden');
       currentEntryId = null;
-      renderEntries();
+      showPage(listPage);
     }
 
     // 删除日记
@@ -712,26 +686,23 @@
       
       if (confirm('确定要删除这篇日记吗？')) {
         entries = entries.filter(e => e.id !== currentEntryId);
-        localStorage.setItem('aure-diary-entries', JSON.stringify(entries));
+        try {
+          localStorage.setItem('aure-diary-entries', JSON.stringify(entries));
+        } catch (e) {}
+        showToast('已删除');
+        renderEntries();
         hideDetail();
       }
     }
 
-    // 绑定事件
-    writeBtn.onclick = showEditor;
-    closeEditor.onclick = hideEditor;
-    saveBtn.onclick = saveEntry;
-    backBtn.onclick = hideDetail;
-    deleteBtn.onclick = deleteEntry;
+    // 启动
+    init();
 
-    // 初始化
-    renderMoodButtons();
-    renderEntries();
-
-    // 注册Service Worker（可选，用于PWA）
+    // 注册Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
   </script>
+
 </body>
 </html>
